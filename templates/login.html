@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+    <script src="https://kit.fontawesome.com/f61b7cd9a7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="header">
+            <h2>Login</h2>
+        </div>
+        <form id="form" class="form" method="POST">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="form-control">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p class='error-message'>
+                                 {{error|escape}}
+                            </p>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <p class='error-message'>
+                            {{error|escape}}
+                        </p>
+                    {% endfor %}
+            </div>
+        {% endif %}
+            <div class="form-control">
+                <label for="username">Username</label>
+                {{form.username}}
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Password</label>
+                {{form.password}}
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+</body>
+</html>

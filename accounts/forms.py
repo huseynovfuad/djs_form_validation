@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField(max_length =120,widget = forms.TextInput(attrs={'placeholder':'Username','class':'form-control'}),label='')
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Password','class':'form-control'}),label='')
+    username = forms.CharField(max_length =120,widget = forms.TextInput(attrs={'placeholder':'Username','class':'form-control','id':'username'}),label='')
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Password','class':'form-control','id':'password'}),label='')
     def clean(self,*args,**kwargs):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')

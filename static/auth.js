@@ -13,17 +13,18 @@ username.addEventListener('change', (event) => {
   }
 });
 
-
-email.addEventListener('change', (event) => {
-  const emailValue = email.value.trim();
-  if(emailValue === '') {
-		setErrorFor(email, 'Email cannot be blank');
-	} else if (!isEmail(emailValue)) {
-		setErrorFor(email, 'Not a valid email');
-	} else {
-		setSuccessFor(email);
-	}
-});
+if(email) {
+	email.addEventListener('change', (event) => {
+		const emailValue = email.value.trim();
+		if (emailValue === '') {
+			setErrorFor(email, 'Email cannot be blank');
+		} else if (!isEmail(emailValue)) {
+			setErrorFor(email, 'Not a valid email');
+		} else {
+			setSuccessFor(email);
+		}
+	})
+};
 
 password.addEventListener('change', (event) => {
   const passwordValue = password.value.trim();
@@ -37,15 +38,18 @@ password.addEventListener('change', (event) => {
   }
 });
 
-password2.addEventListener('change', (event) => {
-  const passwordValue = password.value.trim();
-  const password2Value = password2.value.trim();
-  if(passwordValue !== password2Value) {
-		setErrorFor(password2, 'Passwords does not match');
-	} else{
-		setSuccessFor(password2);
-	}
-});
+
+if(password2) {
+	password2.addEventListener('change', (event) => {
+		const passwordValue = password.value.trim();
+		const password2Value = password2.value.trim();
+		if (passwordValue !== password2Value) {
+			setErrorFor(password2, 'Passwords does not match');
+		} else {
+			setSuccessFor(password2);
+		}
+	})
+};
 
 
 function setErrorFor(input, message) {
